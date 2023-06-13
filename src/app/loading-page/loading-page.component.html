@@ -1,0 +1,39 @@
+<div class="container">
+    <span class="main">
+        <h1 class="logo">Election Personal Survey
+            <span class="image">
+                <p-image src="assets\images\logo.png" alt="Image" width="200"></p-image>
+            </span>
+        </h1>
+    </span>
+
+</div>
+
+
+<div>
+    <p-card [style]="{width: 'auto',height:'300px'}">
+
+        <ng-template pTemplate="footer">
+            <div class="body">
+                <p-button label="Start Survey" routerLink="/survey"></p-button>
+                <p-button label="Download Survey Report" (click)="onclickDownload()"
+                    [style]="{'margin-left': '.5em'}"></p-button>
+                <p-button label="Download Survey Report for Taluka" (click)="onclickDoownloadTaluka()"
+                    [style]="{'margin-left': '.5em'}"></p-button>
+                <p-button label="Preview" routerLink="/preview" [style]="{'margin-left': '.5em'}"></p-button>
+            </div>
+        </ng-template>
+    </p-card>
+</div>
+
+
+<p-dialog header="Download Survey Report for Taluka" [(visible)]="dropDownBox"
+    [style]="{width: '30vw','margin-bottom': '150px'}">
+    <form [formGroup]="talukaForm">
+        <p-dropdown class="dropDown" formControlName="taluka" (onChange)="selectedtaluka($event)"
+            placeholder="Select a Taluka" [options]="talukaData" optionLabel="talukaName" optionValue="talukaName"
+            [showClear]="true" appendTo="body"></p-dropdown>
+        <p-button style="float: right;margin-top: 20px;" icon="pi pi-download" (click)="onclickDoownloadTaluka1()"
+            label="Download"></p-button>
+    </form>
+</p-dialog>

@@ -1,0 +1,168 @@
+<div
+  class="container"
+  style="background-image: url('assets/images/background_image.png')"
+>
+  <div class="container1">
+    <div class="mainDiv">
+      <span class="eclipse"></span>
+
+      <span class="headerTitle">Election Personal Survey</span>
+
+      <span>
+        <img
+          class="logoImage"
+          src="assets/images/logo.png"
+          alt="Image"
+          width="150px"
+          height="50px"
+        />
+      </span>
+    </div>
+  </div>
+
+  <div class="form">
+    <form>
+      <i
+        (click)="onclickCancelSignup()"
+        class="pi pi-times-circle cancelicon"
+      ></i>
+
+      <div class="header">Registration Form</div>
+
+      <div class="inputclass">
+        <div class="col-12 md:col-4">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"
+              ><img
+                src="assets/images/user.png"
+                style="width: 30px; height: 30px"
+            /></span>
+
+            <input
+              type="text"
+              class="inpubox text-base text-color border-1 border-solid surface-border appearance-none outline-none focus:border-primary"
+              pInputText
+              placeholder="Full Name"
+            />
+          </div>
+        </div>
+
+        <div class="col-12 md:col-4">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"
+              ><img
+                src="assets/images/email_icon.png"
+                style="width: 30px; height: 30px"
+            /></span>
+
+            <input
+              type="text"
+              class="inpubox text-base text-color border-1 border-solid surface-border appearance-none outline-none focus:border-primary"
+              pInputText
+              placeholder="Email Id"
+            />
+          </div>
+        </div>
+
+        <div class="col-12 md:col-4">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"
+              ><img
+                src="assets/images/padlock.png"
+                style="width: 30px; height: 30px"
+            /></span>
+
+            <input
+              type="text"
+              class="inpubox text-base text-color border-1 border-solid surface-border appearance-none outline-none focus:border-primary"
+              pInputText
+              placeholder="Password"
+            />
+          </div>
+        </div>
+
+        <div class="col-12 md:col-4">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"
+              ><img
+                src="assets/images/confirm_password.jpg"
+                style="width: 30px; height: 30px"
+            /></span>
+
+            <input
+              type="text"
+              class="inpubox text-base text-color border-1 border-solid surface-border appearance-none outline-none focus:border-primary"
+              pInputText
+              placeholder="Confirm password"
+            />
+          </div>
+        </div>
+
+        <div class="col-12 md:col-4">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"
+              ><img
+                src="assets/images/phone_number.jpg"
+                style="width: 30px; height: 30px"
+            /></span>
+
+            <input
+              type="text"
+              class="inpubox text-base text-color border-1 border-solid surface-border appearance-none outline-none focus:border-primary"
+              pInputText
+              placeholder="Mobile number"
+            />
+          </div>
+        </div>
+
+        <div class="col-12 md:col-4">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"
+              ><img
+                src="assets/images/otp_icons.jpg"
+                style="width: 30px; height: 30px"
+            /></span>
+
+            <input
+              type="text"
+              class="inpubox text-base text-color border-1 border-solid surface-border appearance-none outline-none focus:border-primary"
+              pInputText
+              placeholder="OTP"
+            />
+          </div>
+        </div>
+
+        <div class="col-12 md:col-4">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"
+              ><img
+                src="assets/images/download_icon.jpg"
+                style="width: 30px; height: 30px"
+            /></span>
+
+            <input
+              type="text"
+              class="inpubox text-base text-color border-1 border-solid surface-border appearance-none outline-none focus:border-primary"
+              pInputText
+              placeholder="Upload image"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Primary"
+          class="p-button-rounded saveButton"
+        >
+          Save
+        </button>
+
+        <!-- <button class="p-button-rounded saveButton" type="button" pButton><b>Save</b></button> -->
+      </div>
+    </form>
+  </div>
+</div>

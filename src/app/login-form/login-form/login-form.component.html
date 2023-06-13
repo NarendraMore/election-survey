@@ -1,0 +1,168 @@
+<div class="container">
+  <div class="container1">
+    <div class="mainDiv">
+      <span class="eclipse"></span>
+      <span class="headerTitle">Election Personal Survey</span>
+      <span>
+        <img class="logoImage1" src="assets/images/Anemoi_Logo_Red.png" alt="Image" width="250px" height="50px">
+      </span>
+    </div>
+  </div>
+  <div class="combine">
+    <div class="main">
+      <span>
+        <p>Providing an online platform for conducting election surveys, Our Website can collect valuable data and
+          insights
+          about voter preferences, issues that matter most to voters, and the overall political climate.</p>
+
+        <p>
+          Data can be used by political parties, candidates, and other stakeholders to better understand the electorate
+          and
+          tailor their campaigns and messages accordingly.
+        </p>
+      </span>
+    </div>
+
+    <div class="log">
+      <p-card [style]="{ width: '100%', height: '100%' }">
+        <ng-template pTemplate="header" class="icons">
+          <div class="iconsLink">
+            <img style="width: 20%;height: 20%;box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)" alt="Card"
+              src="assets/images/user.png" />
+
+            <h2 style="margin-top: 10px;">Sign-in via</h2>
+            <!-- <br> -->
+            <div style="margin-right: 9%;">
+              <a href="https://accounts.google.com">
+                <img Class="img-1" alt="Card" src="assets/images/google.png" />
+              </a>
+              <a href="https://www.linkedin.com">
+                <img Class="img-1" alt="Card" src="assets/images/linkdn.png" />
+              </a>
+              <a href="https://www.twitter.com">
+                <img Class="img-1" alt="Card" src="assets/images/twiter.png" />
+              </a>
+              <a href="https://www.facebook.com">
+                <img Class="img-1" alt="Card" src="assets/images/facebook.png" />
+              </a>
+            </div>
+            <div style="display:flex">
+              <span class="line"></span>
+              <span class="or">
+                <h3> Or</h3>
+              </span>
+              <span class="line1"></span>
+            </div>
+          </div>
+        </ng-template>
+
+
+
+        <ng-template pTemplate="body">
+          <div class="gmailtext">
+            <form [formGroup]="loginForm">
+              <div class="inputclass">
+
+                <div class="inputBox">
+                  <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><img src="assets/images/email_icon.png"
+                        style="width: 30px;height: 30px;"></span>
+                    <input type="text" #firstInput (keydown.enter)="secondInput.focus()"
+                      class="inpubox text-base text-color   border-1 border-solid surface-border  appearance-none outline-none focus:border-primary"
+                      pInputText required formControlName="mail_id" placeholder="Email Id">
+                  </div>
+                </div>
+                <div class="inputBox">
+                  <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><img src="assets/images/user.png"
+                        style="width: 30px;height: 30px;"></span>
+                    <input type="text" #secondInput (keydown.enter)="thirdInput.focus()"
+                      class="inpubox  text-base text-color   border-1 border-solid surface-border  appearance-none outline-none focus:border-primary"
+                      pInputText required formControlName="username" placeholder="User Name">
+                  </div>
+                </div>
+                <div class="inputBox">
+                  <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><img src="assets/images/padlock.png"
+                        style="width: 30px;height: 30px;"></span>
+                    <input type="password" #thirdInput
+                      class="inpubox text-base text-color   border-1 border-solid surface-border  appearance-none outline-none focus:border-primary"
+                      pInputText formControlName="password" (keydown.enter)="onClickLogin()" placeholder="Password">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <span class="forgot" (click)="fogotPassword()">Forgot Password?</span>
+                <span class="register" routerLink="/register">Register</span>
+              </div>
+            </form>
+
+          </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <div style="text-align: center;padding-bottom: 10px;">
+            <button pButton pRipple type="button" [disabled]="!loginForm.valid" (click)="onClickLogin()" label="Login"
+              class="loginbtn"></button>
+          </div>
+
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+
+  <p-toast position="top-right"></p-toast>
+
+</div>
+
+<p-dialog header="Forgot Password" [modal]="true" (onHide)="onclickCancelForgotform()" [(visible)]="forgotPassword"
+  [style]="{width: '40vw'}">
+  <form [formGroup]="forgotForm">
+    <div class="inputclass">
+      <div class="inputBox">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><img src="assets/images/email_icon.png"
+              style="width: 30px;height: 30px;"></span>
+          <input type="text"
+            class="inpubox text-base text-color   border-1 border-solid surface-border  appearance-none outline-none focus:border-primary"
+            pInputText required formControlName="mail_id" placeholder="Email Id">
+        </div>
+      </div>
+      <div class="inputBox">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><img src="assets/images/user.png" style="width: 30px;height: 30px;"></span>
+          <input type="text"
+            class="inpubox text-base text-color   border-1 border-solid surface-border  appearance-none outline-none focus:border-primary"
+            pInputText required formControlName="user_name" placeholder="User Name">
+        </div>
+      </div>
+
+      <div class="inputBox">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><img src="assets/images/padlock.png"
+              style="width: 30px;height: 30px;"></span>
+          <input type="password"
+            class="inpubox text-base text-color   border-1 border-solid surface-border  appearance-none outline-none focus:border-primary"
+            pInputText required formControlName="new_password" placeholder="New Password">
+        </div>
+      </div>
+      <div class="inputBox">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><img src="assets/images/confirm_password.jpg"
+              style="width: 30px;height: 30px;"></span>
+          <input type="password"
+            class="inpubox text-base text-color   border-1 border-solid surface-border  appearance-none outline-none focus:border-primary"
+            pInputText formControlName="confirm_password" placeholder="Confirm New password">
+        </div>
+      </div>
+
+
+    </div>
+  </form>
+  <div style="text-align: center;">
+    <button pButton pRipple type="button" [disabled]="!forgotForm.valid" (click)="onClickforgotPassword()"
+      label="Forgot" class="loginbtn"></button>
+  </div>
+
+</p-dialog>
+
+<!-- <p-toast position="top-left" ></p-toast> -->

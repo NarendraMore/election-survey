@@ -1,0 +1,70 @@
+
+<app-header></app-header>
+<p-dialog styleClass="formsDialog"  [modal]="true" (onHide)="onClickCancel()" header="Candidate Survey" [(visible)]="createCandidate" [contentStyle]="{ 'background-color': '#F5F3F3' }">
+    <form [formGroup]="candidateForm">
+        <div class="candidateClass"> 
+        <div class="grid">
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Taluka</label>
+            
+                <input ngClass="formInput" type="text" pInputText formControlName="taluka"
+                placeholder="Enter " required />
+                <small *ngIf="!candidateForm.get('taluka')?.valid && candidateForm.get('taluka')?.touched">
+                  <span style="color: red;font-size: 15px;"> Taluka is required.</span>
+                </small>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Village</label>           
+                <input ngClass="formInput" type="text" pInputText formControlName="village"
+                placeholder="Enter" required/>
+                <small *ngIf="!candidateForm.get('village')?.valid && candidateForm.get('village')?.touched">
+                    <span style="color: red;font-size: 15px;"> Village is required.</span>
+                  </small>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Party Name</label>
+                <input ngClass="formInput" type="text" pInputText formControlName="partyname"
+                placeholder="Enter" required/>
+                <small *ngIf="!candidateForm.get('partyname')?.valid && candidateForm.get('partyname')?.touched">
+                    <span style="color: red;font-size: 15px;"> Party Name is required.</span>
+                  </small>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Candidate Name</label>
+                <input ngClass="formInput" type="text" pInputText formControlName="candidatename"
+                placeholder="Enter" required />
+                <small *ngIf="!candidateForm.get('candidatename')?.valid && candidateForm.get('candidatename')?.touched">
+                    <span style="color: red;font-size: 15px;"> Candidate Name is required.</span>
+                  </small>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Why?</label>
+              
+                <input ngClass="formInput" type="text" pInputText formControlName="why"
+                placeholder="Enter" required/>
+                <small *ngIf="!candidateForm.get('why')?.valid && candidateForm.get('why')?.touched">
+                    <span style="color: red;font-size: 15px;">This Field is required.</span>
+                  </small>
+            </div>
+          </div>
+        </div>
+        </div>
+      </form>
+      <div class="cardFooter1">
+        <button pButton pRipple type="submit"  label="Save"
+          class="p-button-rounded p-button-sm p-button-help" [disabled]="!candidateForm.valid"  (click)="submitCandidateForm()"></button>
+        <button pButton pRipple type="button" label="Reset " class="p-button-rounded p-button-sm p-button-success"
+          (click)="resetCandidateForm()"></button>
+      </div>
+      <p-toast position="top-right"></p-toast>
+</p-dialog>
+<app-footer></app-footer>

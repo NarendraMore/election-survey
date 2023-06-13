@@ -1,0 +1,504 @@
+<div class="contianer">
+  <div class="createSurveyBtn1" style="height: 20%">
+    <button pButton label="Create Survey" icon="pi pi-plus-circle" (click)="createSurveyFun()"
+      class="p-button-sm pbuttonclass"></button> 
+    <!-- <button pButton label="Create Survey" icon="pi pi-plus-circle" (click)="createSurveyFun()"
+      class="p-button-sm pbuttonclass"></button> -->
+      <div class="headBar">
+        <h2 class="surveyTitle">
+          Survey
+          <hr />
+        </h2>
+      </div>
+
+    <p-table #dt [value]="Voter" [(selection)]="selectedValue" [rows]="3" [paginator]="true" [filterDelay]="0"
+      [globalFilterFields]="['state','taluka','village','booth_No',
+       'family_No_for_Booth','caste','category','religion',
+       'sr_No_on_VL','name_of_voter','adhar_no','candidates','candidate_of_choice',
+       'caste','mobile_number','development','whom_are_you_going_to_vote_for']" class="responsive-table">
+      <ng-template pTemplate="caption">
+        <div class="flex align-items-center" style="height: 10%;">
+          <span class="p-input-icon-left" style="box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.5)">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+              placeholder="Search..." />
+          </span>
+          <!-- <span class="headIcons">
+            <i class="pi pi-trash"  (click)="onClickdelete()" style="font-size: 2rem"></i>
+          </span> -->
+          <span class="headIcons">
+            <i class="pi pi-file-edit" (click)="onClickEdit()" style="font-size: 2rem"></i>
+          </span>
+          <span class="headIcons">
+            <i class="pi pi-eye" (click)="onClickView()" style="font-size: 2rem"></i>
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header" class="p-datatable-header" style="background-color: #b6dedc">
+        <tr class="myTable">
+          <th style="width: 10rem;background: #B6DEDC;"> <p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
+          <th pSortableColumn="state" style="background: #B6DEDC;font-family: 'Inter';font-size: 20px;"> State</th>
+          <th pSortableColumn="taluka" style="background: #B6DEDC;font-family: 'Inter';font-size: 20px;">Taluka</th>
+          <th pSortableColumn="village" style="background: #B6DEDC;font-family: 'Inter';font-size: 20px;"
+            >Village</th>
+          <th pSortableColumn="booth_No"
+            style="background: #B6DEDC;font-family: 'Inter';min-width:9rem;font-size: 20px;">Booth No</th>
+          <th pSortableColumn="family_No_for_Booth"
+            style="background: #B6DEDC;font-family: 'Inter';min-width:10rem;font-size: 20px;">Family No</th>
+          <th pSortableColumn="sr_No_for_HOF_in_VL"
+            style="background: #B6DEDC;font-family: 'Inter';min-width:10rem;font-size: 20px;">HOF in VL</th>
+          <th pSortableColumn="caste" style="background: #B6DEDC;font-family: 'Inter';font-size: 20px;"
+            >Caste</th>
+          <th pSortableColumn="category" style="background: #B6DEDC;font-family: 'Inter';font-size: 20px;"
+            >Category</th>
+          <th pSortableColumn="religion" style="background: #B6DEDC;font-family: 'Inter';font-size: 20px;"
+            >Religion</th>
+          <th pSortableColumn="sr_No_on_VL"
+            style="background: #B6DEDC;font-family: 'Inter';min-width:10rem;font-size: 20px;">Sr No on VL</th>
+          <th pSortableColumn="name_of_voter"
+            style="background: #B6DEDC;font-family: 'Inter';min-width:10rem;font-size: 20px;">Name of Voter</th>
+          <th pSortableColumn="adhar_no"
+            style="background: #B6DEDC;font-family: 'Inter';font-size: 20px;min-width:10rem">Age of Voter</th>
+          <th pSortableColumn="mobile_number"
+            style="background: #B6DEDC;font-family: 'Inter';min-width:12rem;font-size: 20px;"> Mobile Number</th>
+          <th pSortableColumn="age_of_voter"
+            style="background: #B6DEDC;font-family: 'Inter';min-width:8rem;font-size: 20px;"> Adhar No</th>
+          <th pSortableColumn="education" style="background: #B6DEDC;font-family: 'Inter';font-size: 20px;">Education
+          </th>
+          <th pSortableColumn="occupation" style="background: #B6DEDC;font-family: 'Inter';font-size: 20px;">Occupation
+          </th>
+          <th pSortableColumn="vehicle"
+            style="background: #B6DEDC;font-family: 'Inter';min-width:5rem;font-size: 20px;">Vehicle</th>
+          <th pSortableColumn="annual_income"
+            style="background: #B6DEDC;font-family: 'Inter';min-width:12rem;font-size: 20px;">Annual Income</th>
+          <th pSortableColumn="toilet" style="background: #B6DEDC;font-family: 'Inter';font-size: 20px;">Toilet</th>
+          <th pSortableColumn="water_source"
+            style="background: #B6DEDC;font-family: 'Inter';min-width:10rem;font-size: 20px;">Water Source</th>
+          <th pSortableColumn="person_from_whom_you_seek_help"
+            style="background: #B6DEDC;font-family: 'Inter';min-width:15rem;font-size: 20px;"> Helping Person Name</th>
+          <th pSortableColumn="development" style="background: #B6DEDC;font-family: 'Inter';font-size: 20px;">
+            Development</th>
+          <th pSortableColumn="development_description"
+            style="background: #B6DEDC;font-family: 'Inter';min-width:16rem;font-size: 20px;">Development Description
+          </th>
+          <th pSortableColumn="whom_are_you_going_to_vote_for"
+            style="background: #B6DEDC;font-family: 'Inter';min-width:19rem;font-size: 20px;"> Whom are you going to
+            vote for</th>
+          <th pSortableColumn="candidate_of_choice"
+            style="background: #B6DEDC;font-family: 'Inter';min-width:12rem;font-size: 20px;">Candidate Name</th>
+          <th pSortableColumn="which_issue_are_you_facing_currently"
+            style="background: #B6DEDC;font-family: 'Inter';font-size: 20px;">Issue</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" style="background-color: #b6dedc" let-vote>
+        <tr class="p-selectable-row">
+          <td style="background: #B6DEDC;"><p-tableCheckbox [value]="vote" (click)="onChecks(vote)"></p-tableCheckbox>
+          </td>
+          <td style="background: #B6DEDC;">{{ vote.state }}</td>
+          <td style="background: #B6DEDC;">{{ vote.taluka }}</td>
+          <td style="background: #B6DEDC;">{{ vote.village }}</td>
+          <td style="background: #B6DEDC;font-family: 'Inter'">{{ vote.booth_No }}</td>
+          <td style="background: #B6DEDC;font-family: 'Inter'">{{ vote.family_No_for_Booth }}</td>
+          <td style="background: #B6DEDC;font-family: 'Inter'">{{ vote.sr_No_for_HOF_in_VL }}</td>
+          <td style="background: #B6DEDC;">{{ vote.caste }}</td>
+          <td style="background: #B6DEDC;">{{ vote.category }}</td>
+          <td style="background: #B6DEDC;">{{ vote.religion }}</td>
+          <td style="background: #B6DEDC;font-family: 'Inter'">{{ vote.sr_No_on_VL }}</td>
+          <td style="background: #B6DEDC;font-family: 'Inter'">{{ vote.name_of_voter }}</td>
+          <td style="background: #B6DEDC;font-family: 'Inter'">{{ vote.age_of_voter }}</td>
+          <td style="background: #B6DEDC;">{{ vote.mobile_number }}</td>
+          <td style="background: #B6DEDC;">{{ vote.adhar_no }}</td>
+          <td style="background: #B6DEDC;">{{ vote.education }}</td>
+          <td style="background: #B6DEDC;font-family: 'Inter'">{{ vote.occupation }}</td>
+          <td style="background: #B6DEDC;font-family: 'Inter'">{{ vote.vehicle }}</td>
+          <td style="background: #B6DEDC;font-family: 'Inter'">{{ vote.annual_income }}</td>
+          <td style="background: #B6DEDC;">{{ vote.toilet }}</td>
+          <td style="background: #B6DEDC;">{{ vote.water_source }}</td>
+          <td style="background: #B6DEDC;">{{ vote.person_from_whom_you_seek_help }}</td>
+          <td style="background: #B6DEDC;">{{ vote.development }}</td>
+          <td style="background: #B6DEDC;">{{ vote.development_description }}</td>
+          <td style="background: #B6DEDC;">{{ vote.whom_are_you_going_to_vote_for }}</td>
+          <td style="background: #B6DEDC;">{{ vote.candidate_of_choice }}</td>
+          <td style="background: #B6DEDC;">{{ vote.which_issue_are_you_facing_currently }}</td>
+
+
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+
+<p-dialog [(visible)]="displayResponsive"  [modal]="true" (onHide)="onclickCancel()" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
+  [style]="{width: '80vw'}">
+  <ng-template pTemplate="header">
+    <span class="heading"
+      style="text-align: center; width: 100%;font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 30px; line-height: 10px;">
+      Edit Survey
+      <hr style="width: 70%;" />
+    </span>
+  </ng-template>
+  <form [formGroup]="surveyForm">
+    <div class="grid">
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">State</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="state" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Taluka</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="taluka" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Village</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="village" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Booth No</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="booth_No" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Family No</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="family_No_for_Booth" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">HOF in VL</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="sr_No_for_HOF_in_VL" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Religion</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="caste" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Caste</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="category" />
+        </div>
+
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Category</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="religion" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Sr No on VL</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="sr_No_on_VL" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Name of Voter</label>
+
+          <input ngClass="formInput" type="text" pInputText formControlName="name_of_voter" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Age of Voter</label>
+
+          <input ngClass="formInput" type="text" pInputText formControlName="age_of_voter" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Mobile Number</label>
+
+          <input ngClass="formInput" type="text" pInputText formControlName="mobile_number" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Adhar No</label>
+
+          <input ngClass="formInput" type="text" pInputText formControlName="adhar_no" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Education</label>
+
+          <input ngClass="formInput" type="text" pInputText formControlName="education" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Occupation</label>
+
+          <input ngClass="formInput" type="text" pInputText formControlName="occupation" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Vehicle</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="vehicle" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Annual Income</label>
+
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="annual_income" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Toilet</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="toilet" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Water Source</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="water_source" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Helping Person Name</label>
+          <input ngClass="formInput" class="textBox textbox-shadow" pInputText
+            formControlName="person_from_whom_you_seek_help" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Development</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="development" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Development Description</label>
+          <input ngClass="formInput" class="textBox textbox-shadow" pInputText
+            formControlName="development_description" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Whom are you going to vote for</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="whom_are_you_going_to_vote_for" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Candidate Name</label>
+          <input ngClass="formInput" type="text" pInputText formControlName="candidate_of_choice" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Issue</label>
+
+          <input ngClass="formInput" class="textBox textbox-shadow" pInputText
+            formControlName="which_issue_are_you_facing_currently" />
+        </div>
+      </div>
+    </div>
+  </form>
+  <div style="text-align: center;margin-top: 20px;">
+    <button pButton label="Update" [disabled]="!surveyForm.valid" class="button2"
+      class="p-button-rounded p-button-sm p-button-success" (click)="onclickUpdate1()" icon="pi pi-check"></button>
+
+  </div>
+</p-dialog>
+
+
+
+<p-dialog [(visible)]="display"   [modal]="true" (onHide)="onclickCancel()" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
+  [style]="{width: '80vw'}">
+  <ng-template pTemplate="header">
+    <span class="heading"
+      style="text-align: center; width: 100%;font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 30px; line-height: 10px;">
+      Preview
+      <hr style="width: 70%;" />
+    </span>
+  </ng-template>
+  <form [formGroup]="surveyForm">
+    <div class="grid">
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">State</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="state" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Taluka</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="taluka" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Village</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="village" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Booth No</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="booth_No" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Family No</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="family_No_for_Booth" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">HOF in VL</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="sr_No_for_HOF_in_VL" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Religion</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="caste" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Caste</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="category" />
+        </div>
+
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Category</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="religion" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Sr No on VL</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="sr_No_on_VL" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Name of Voter</label>
+
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="name_of_voter" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Age of Voter</label>
+
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="age_of_voter" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Mobile Number</label>
+
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="mobile_number" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Adhar No</label>
+
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="adhar_no" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Education</label>
+
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="education" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Occupation</label>
+
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="occupation" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Vehicle</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="vehicle" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Annual Income</label>
+
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="annual_income" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Toilet</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="toilet" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Water Source</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="water_source" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Helping Person Name</label>
+          <input ngClass="formInput" class="textBox textbox-shadow" pInputText
+            formControlName="person_from_whom_you_seek_help" readonly />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Development</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="development" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Development Description</label>
+          <input ngClass="formInput" class="textBox textbox-shadow" readonly pInputText
+            formControlName="development_description" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Whom are you going to vote for</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="whom_are_you_going_to_vote_for" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Candidate Name</label>
+          <input ngClass="formInput" type="text" readonly pInputText formControlName="candidate_of_choice" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="grid-content">
+          <label for="state">Issue</label>
+
+          <input ngClass="formInput" class="textBox textbox-shadow" readonly pInputText
+            formControlName="which_issue_are_you_facing_currently" />
+        </div>
+      </div>
+    </div>
+  </form>
+
+</p-dialog>

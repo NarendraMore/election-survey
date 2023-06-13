@@ -1,0 +1,98 @@
+<div class="container" style="background-image:url('assets/images/background_image.png')">
+    <div class="container1">
+        <div class="mainDiv">
+            <span class="eclipse"></span>
+            <span class="headerTitle">Election Personal Survey</span>
+            <span>
+                <img class="logoImage" src="assets/images/Anemoi_Logo_Red.png" alt="Image"  width="200px"
+                height="50px">
+            </span>
+        </div>
+    </div>
+    <div class="form">
+        <form>
+            <i (click)="onclickCancelSignup()" class="pi pi-times-circle cancelicon"></i>
+            <div class="header">Registration Form </div>
+            <form [formGroup]="newUserForm">
+                <div class="inputclass">
+                    <div class="inputBox">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><img src="assets/images/user.png"
+                                    style="width: 30px;height: 30px;"></span>
+                            <input type="text"
+                                class="inpubox text-base text-color   border-1 border-solid surface-border  appearance-none outline-none focus:border-primary"
+                                pInputText required formControlName="fullname" placeholder="Full Name">
+                        </div>
+                    </div>
+                    <div class="inputBox">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><img src="assets/images/email_icon.png"
+                                    style="width: 30px;height: 30px;"></span>
+                            <input type="text"
+                                class="inpubox text-base text-color   border-1 border-solid surface-border  appearance-none outline-none focus:border-primary"
+                                pInputText required formControlName="mail_id" placeholder="Email Id">
+                        </div>
+                    </div>
+                    <div class="inputBox">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><img src="assets/images/padlock.png"
+                                    style="width: 30px;height: 30px;"></span>
+                            <input type="password"
+                                class="inpubox text-base text-color   border-1 border-solid surface-border  appearance-none outline-none focus:border-primary"
+                                pInputText required formControlName="password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="inputBox">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><img src="assets/images/confirm_password.jpg"
+                                    style="width: 30px;height: 30px;"></span>
+                            <input type="password"
+                                class="inpubox text-base text-color   border-1 border-solid surface-border  appearance-none outline-none focus:border-primary"
+                                pInputText formControlName="cofirmpassword" placeholder="Confirm password">
+                        </div>
+                    </div>
+                    <div class="inputBox">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><img src="assets/images/phone_number.jpg"
+                                    style="width: 30px;height: 30px;"></span>
+                            <input type="text"
+                                class="inpubox text-base text-color   border-1 border-solid surface-border  appearance-none outline-none focus:border-primary"
+                                pInputText formControlName="mobilenumber" placeholder="Mobile number">
+                        </div>
+                    </div>
+                    <div class="inputBox">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><img src="assets/images/otp_icons.jpg"
+                                    style="width: 30px;height: 30px;"></span>
+                            <input type="text" formControlName="otp"
+                                class="inpubox text-base text-color   border-1 border-solid surface-border  appearance-none outline-none focus:border-primary"
+                                pInputText placeholder="OTP">
+                        </div>
+                        <button style="height: 30px;margin-top:4% ; background-color: #D9D9D9;color: black;"
+                            (click)="onclickSendOtp()" pButton type="submit">
+                            Send OTP
+                        </button>
+                    </div>
+                    <div class="inputBox">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><img src="assets/images/download_icon.jpg"
+                                    style="width: 30px;height: 30px;"></span>
+
+                            <input formControlName="image" type="file" name="image"
+                                class="inpubox text-base text-color   border-1 border-solid surface-border  appearance-none outline-none focus:border-primary"
+                                pInputText #inputFile (change)="selectFile($event)" placeholder="Upload image">
+                        </div>
+                    </div>
+                  
+
+                </div>
+            </form>
+            <div class="footer">
+                <!-- <button pButton pRipple type="button" label="Primary" class="p-button-rounded saveButton">Save</button> -->
+                <button style="padding-left: 34%;" [disabled]="!newUserForm.valid" class="p-button-rounded saveButton" (click)="onClickSignup()"
+                    type="button" pButton><b>Save</b></button>
+            </div>
+
+        </form>
+    </div>
+</div>

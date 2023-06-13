@@ -1,0 +1,194 @@
+<div class="contianer">
+    <div class="createSurveyBtn1" style="height: 20%">
+        <button pButton label="Create Survey" icon="pi pi-plus-circle" (click)="createCandidateSurvey()"
+            class="p-button-sm pbuttonclass"></button>
+            <div class="headBar">
+                <h2 class="surveyTitle">
+                    Candidate Survey
+                    <hr />
+                </h2>
+            </div>
+
+        <p-table #dt1 [value]="Candidates" [(selection)]="selectedValue" [rows]="4" [paginator]="true" [filterDelay]="0"
+            [globalFilterFields]="['taluka','village','candidatename','why','partyname']" class="responsive-table">
+            <ng-template pTemplate="caption">
+                <div class="flex align-items-center" style="height: 10%;">
+                    <span class="p-input-icon-left" style="box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.5)">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+                            placeholder="Search..." />
+                    </span>
+                    <!-- <span class="headIcons">
+              <i class="pi pi-trash"  (click)="onClickdelete()" style="font-size: 2rem"></i>
+            </span> -->
+                    <span class="headIcons">
+                      <div *ngIf="showTooltip" style="position: fixed;margin-top: -2%;font-size: 16px;">Edit</div>
+                        <i class="pi pi-file-edit" (mouseover)="showTooltip = true" (mouseout)="showTooltip = false"  (click)="onClickEdit()" style="font-size: 2rem "></i>
+                    </span>
+                    <span class="headIcons">
+                      <div *ngIf="showTooltip1" style="position: fixed;margin-top: -2%;font-size: 16px;">Preview</div>
+                        <i class="pi pi-eye" (mouseover)="showTooltip1 = true" (mouseout)="showTooltip1 = false" (click)="onClickView()" style="font-size: 2rem"></i>
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" class="p-datatable-header" style="background-color: #b6dedc">
+                <tr class="myTable">
+                    <th style="width: 10rem;background: #B6DEDC;"> <p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
+                    <th style="background: #B6DEDC;font-family: 'Inter';font-size: 20px;" pSortableColumn="taluka">Taluka</th>
+                    <th style="background: #B6DEDC;font-family: 'Inter';font-size: 20px;" pSortableColumn="village">Villge</th>
+                    <th style="background: #B6DEDC;font-family: 'Inter';font-size: 20px;" pSortableColumn="partyname">Party Name</th>
+                    <th style="background: #B6DEDC;font-family: 'Inter';min-width:9rem;font-size: 20px;" pSortableColumn="candidatename">Candidate Name</th>
+                    <th style="background: #B6DEDC;font-family: 'Inter';min-width:10rem;font-size: 20px;" pSortableColumn="why">Why</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" style="background-color: #b6dedc" let-candidate>
+                <tr class="p-selectable-row">
+                    <td style="background: #B6DEDC;"><p-tableCheckbox [value]="candidate"
+                            (click)="onChecks(candidate)"></p-tableCheckbox>
+                    </td>
+                    <td style="background: #B6DEDC;">{{ candidate.taluka }}</td>
+                    <td style="background: #B6DEDC;">{{ candidate.village }}</td>
+                    <td style="background: #B6DEDC;">{{ candidate.partyname }}</td>
+                    <td style="background: #B6DEDC;font-family: 'Inter'">{{ candidate.candidatename }}</td>
+                    <td style="background: #B6DEDC;font-family: 'Inter'">{{ candidate.why }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+
+
+<p-dialog [(visible)]="displayEditCandiate" (onHide)="onclickCancelCandidate()" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
+  [style]="{width: '80vw'}">
+  <ng-template pTemplate="header">
+    <span class="heading"
+      style="text-align: center; width: 100%;font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 30px; line-height: 10px;">
+      Edit Candidate Survey
+      <hr style="width: 70%;" />
+    </span>
+  </ng-template>
+  <form [formGroup]="editCandidateForm">
+    <div class="candidateClass"> 
+        <div class="grid">
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Taluka</label>
+            
+                <input ngClass="formInput" type="text" pInputText formControlName="taluka"
+                placeholder="Enter " required />
+                <small *ngIf="!editCandidateForm.get('taluka')?.valid && editCandidateForm.get('taluka')?.touched">
+                  <span style="color: red;font-size: 15px;"> Taluka is required.</span>
+                </small>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Village</label>           
+                <input ngClass="formInput" type="text" pInputText formControlName="village"
+                placeholder="Enter" required/>
+                <small *ngIf="!editCandidateForm.get('village')?.valid && editCandidateForm.get('village')?.touched">
+                    <span style="color: red;font-size: 15px;"> Village is required.</span>
+                  </small>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Party Name</label>
+                <input ngClass="formInput" type="text" pInputText formControlName="partyname"
+                placeholder="Enter" required/>
+                <small *ngIf="!editCandidateForm.get('partyname')?.valid && editCandidateForm.get('partyname')?.touched">
+                    <span style="color: red;font-size: 15px;"> Party Name is required.</span>
+                  </small>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Candidate Name</label>
+                <input ngClass="formInput" type="text" pInputText formControlName="candidatename"
+                placeholder="Enter" required />
+                <small *ngIf="!editCandidateForm.get('candidatename')?.valid && editCandidateForm.get('candidatename')?.touched">
+                    <span style="color: red;font-size: 15px;"> Candidate Name is required.</span>
+                  </small>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Why?</label>
+              
+                <input ngClass="formInput" type="text" pInputText formControlName="why"
+                placeholder="Enter" required/>
+                <small *ngIf="!editCandidateForm.get('why')?.valid && editCandidateForm.get('why')?.touched">
+                    <span style="color: red;font-size: 15px;">This Field is required.</span>
+                  </small>
+            </div>
+          </div>
+        </div>
+        </div>
+  </form>
+  <div style="text-align: center;margin-top: 20px;">
+    <button pButton label="Update" [disabled]="!editCandidateForm.valid" class="button2"
+      class="p-button-rounded p-button-sm p-button-success" (click)="onclickUpdateCandidate()" icon="pi pi-check"></button>
+
+  </div>
+</p-dialog>
+
+
+<p-dialog [(visible)]="displayViewCandiate" (onHide)="onclickCancelCandidate()" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
+  [style]="{width: '80vw'}">
+  <ng-template pTemplate="header">
+    <span class="heading"
+      style="text-align: center; width: 100%;font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 30px; line-height: 10px;">
+      View Candidate Survey
+      <hr style="width: 70%;" />
+    </span>
+  </ng-template>
+  <form [formGroup]="editCandidateForm">
+    <div class="candidateClass"> 
+        <div class="grid">
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Taluka</label>
+            
+                <input ngClass="formInput" type="text" pInputText formControlName="taluka"
+                placeholder="Enter " required readonly/>
+               
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Village</label>           
+                <input ngClass="formInput" type="text" pInputText formControlName="village"
+                placeholder="Enter" required readonly/>
+              
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Party Name</label>
+                <input ngClass="formInput" type="text" pInputText formControlName="partyname"
+                placeholder="Enter" required readonly/>
+              
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Candidate Name</label>
+                <input ngClass="formInput" type="text" pInputText formControlName="candidatename"
+                placeholder="Enter" required readonly />
+               
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Why?</label>
+              
+                <input ngClass="formInput" type="text" pInputText formControlName="why"
+                placeholder="Enter" required readonly/>
+               
+            </div>
+          </div>
+        </div>
+        </div>
+  </form>
+</p-dialog>

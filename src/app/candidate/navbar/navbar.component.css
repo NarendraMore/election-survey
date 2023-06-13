@@ -1,0 +1,58 @@
+.navbar {
+    /* width: 20px; */
+    margin-left: 5px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  /* .image{
+  align-self: center;
+  
+  } */
+  
+  .navbarHeader {
+    /* padding-left: 50px; */
+  }
+  
+  ul {
+    list-style-type: none;
+    padding-left: 20px;
+  }
+  /* li:hover{
+      background-color:cyan;
+  } */
+  .special:hover {
+    cursor: pointer;
+    background-color: burlywood;
+    width: 150px;
+  }
+  
+  hr {
+    width: 80%;
+    text-align: left;
+    margin-left: 0;
+    border: 1px solid #ffffff;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px 0px #00000040;
+  }
+  .pages {
+    position: relative;
+    float: right;
+    height: 20vh;
+    flex: 1;
+    overflow-x: hidden;
+    /* padding: 20px; */  
+  }
+  /* ::ng-deep .invisibaleCard {
+      border: none;
+      box-shadow: none;
+    } */
+  
+  .layout {
+    height: 1000px;
+    border: 1px dashed;
+  }
+  

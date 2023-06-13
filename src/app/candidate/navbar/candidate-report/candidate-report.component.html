@@ -1,0 +1,55 @@
+<div class="contianer1">
+    <div class="createSurveyBtn1" style="height: 30%">
+        <button pButton label="Create Survey" icon="pi pi-plus-circle" (click)="createCandidateSurvey()"
+            class="p-button-sm pbuttonclass"></button>
+    </div>
+    <div class="headBar">
+        <h2 class="surveyTitle1">
+            Report
+            <hr />
+        </h2>
+        <div class="report">
+            <div class="field">
+
+                <button style="width: 50%;background: #554A99; box-shadow: 0px 4px 4px 0px #00000040;
+                " pButton pRipple label="Download Candidate Survey Report" (click)="onclickDownloads()"
+                    icon="pi pi-download"></button>
+            </div>
+        </div>
+        <div class="report1">
+            <div class="field">
+
+                <button style="width: 50%;background: #554A99; box-shadow: 0px 4px 4px 0px #00000040;
+                " pButton pRipple label="Download Candidate Survey Report for Taluka" (click)="onclickTalukaDownloads()"
+                    icon="pi pi-download"></button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<p-dialog header="Download Survey Report for Taluka" [(visible)]="talukaDialogBox"
+[style]="{width: '60vw'}">
+<ng-template pTemplate="header">
+    <span class="heading"
+        style="text-align: center; width: 100%;font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 30px; line-height: 10px;">
+        Download Candidate Survey Report for Taluka
+        <hr style="width: 70%;" />
+    </span>
+</ng-template>
+<form [formGroup]="candidateTalukaForm">
+    <span>
+    <p-dropdown appendTo="body" styleClass="dropdownTaluka" [options]="uniqueTalukaArrays" formControlName="taluka"
+        optionLabel="talukaName" placeholder="Select" optionValue="talukaName">
+    </p-dropdown> <br>
+    <small *ngIf="!candidateTalukaForm.get('taluka')?.valid && candidateTalukaForm.get('taluka')?.touched">
+        <span style="color: red;font-size: 15px; margin-left: 22%;">This Field is required.</span>
+      </small>
+    </span>
+</form>
+<ng-template pTemplate="footer">
+    <button pButton pRipple style="width: 30%;background: #554A99;box-shadow: 0px 4px 4px 0px #00000040;"
+        icon="pi pi-download" [disabled]="!candidateTalukaForm.valid" (click)="onclickDoownloadCandidateTaluka()" label="Download"></button>
+</ng-template>
+</p-dialog>

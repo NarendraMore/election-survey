@@ -1,0 +1,133 @@
+.container {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 122vh;
+    position: relative;
+
+
+}
+
+
+.form {
+    /* display: grid; */
+    background-color: #FFFFFF;
+    /* width: 35%; */
+    border-radius: 1em;
+    padding: 1%;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    height: auto;
+  
+    /* margin-right: -50%; */
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 5px 5px 0px #00000040;
+
+}
+
+.inputBox {
+margin-bottom: 3%;
+margin-top: 3%;
+/* width: 80%; */
+padding-left: 10%;
+padding-right: 10%;
+}
+
+
+
+.p-inputgroup-addon {
+    box-shadow: 0px 4px 4px 0px #00000040;
+    background-color: #D9D9D9;
+}
+
+.inpubox {
+    background-color: #D9D9D9;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    width: 50%;
+ 
+
+}
+
+.saveButton {
+    background: #3E4FAC;
+    box-shadow: 0px 6px 6px 0px #00000040;
+    margin-top: 10px;
+    height: 35px;
+    width: 100px;
+    /* padding-left: 30px; */
+}
+
+.footer {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    font-family: 'Inter';
+    font-style: normal;
+    /* line-height: 10px; */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    font-family: Inter;
+    /* margin-bottom: 15px; */
+    /* margin-left: 30px; */
+    /* margin-top: 10px; */
+    font-size: 22px;
+    /* font-weight: 300; */
+    /* line-height: 35px; */
+    letter-spacing: 0em;
+
+
+}
+
+.cancelicon {
+    float: right;
+    margin-right: 10px;
+    font-size: 25px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    cursor: pointer;
+}
+
+.container1 {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.mainDiv {
+
+    padding: 2% 2px 4px 4px;
+    font-family: Inter; 
+    height: 150px;
+
+}
+
+.headerTitle {
+    margin-left: 7%;
+    font-family: Inter;
+    font-size: 35px;
+    text-shadow: 5px 5px 15px #747373;
+
+}
+
+.eclipse {
+    margin-left: 2%;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    left: 5px;
+    background: #757ae4;
+    border-radius: 50%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.logoImage {
+    float: right;
+    margin-right: 5%;
+    /* box-shadow: 5px 5px 15px #888888; */
+    shape-outside: border-box;
+}

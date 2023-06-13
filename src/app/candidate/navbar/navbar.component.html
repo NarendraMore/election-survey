@@ -1,0 +1,46 @@
+
+<app-header></app-header>
+<!-- <div class="navbar">
+    <div >
+       
+    </div>
+</div> -->
+<div style="margin-top: 5%;float: left;width: 15%;margin-left: 25px;">
+    <p-card [style]="{'width': '100%', 'margin-left': '0em','background-color':'rgba(102, 128, 219, 0.25)'}">
+        <ng-template pTemplate="header">
+            <span class="navbar"><img src="assets/images/user.png" id="myImage" alt="Profile Image" style="width:70px;height: 60px;box-shadow: 0px 4px 4px 0px #00000040;
+            " alt=""></span>
+            <div class="navbarHeader">
+                <ul>
+                    <li  *ngFor="let data of navData" class="special" (click)="displaymenus('list')"><span [routerLink]="[data.routeLink]"
+                            > <img
+                                src="assets/images/clipboard.png" style="width: 40px;height: 40px; margin-right: 12px;box-shadow: 0px 5px 5px 0px #00000040;
+                                " alt=""><label style="color: #000000;font-size: 20px;cursor: pointer;">
+                                Survey</label></span></li>
+                    <hr>
+                    <li class="special" (click)="displaymenus('report')"> <span> <img src="assets/images/download_icon.jpg"
+                                style="width: 45px;height: 40px; margin-right: 9px;box-shadow: 0px 5px 5px 0px #00000040;
+                                " alt=""><label style="color: #000000;font-size: 20px;cursor: pointer;">
+                                Report</label></span></li>
+                    <hr>
+                    <li class="special" (click)="displaymenus('analyst')" style="margin-left: 5px;"><span> <img src="assets/images/statistic.png" style="width: 30px;height: 30px;  margin-right: 15px;box-shadow: 0px 5px 5px 0px #00000040;
+                                " alt=""><label style="color: #000000;font-size: 20px;cursor: pointer;"> Analysis</label></span></li>
+                   
+                    <hr>
+                    <li class="special" (click)="onClicklogout()" style="margin-left: 5px;"><span> <img src="assets/images/logout.png" style="width: 30px;height: 30px;  margin-right: 15px;box-shadow: 0px 5px 5px 0px #00000040;
+                        " alt=""><label style="color: #000000;font-size: 19px;cursor: pointer;"> Log Out</label></span></li>
+                </ul>
+            </div>
+        </ng-template>
+
+    </p-card>
+</div>
+<div class="pages" style="width: 80%; height: auto">
+  <router-outlet></router-outlet>
+  <app-survey-list *ngIf="listFlag"></app-survey-list>
+   <app-candidate-report *ngIf="reportFlag"></app-candidate-report>
+  <app-analysis *ngIf="analysisFlag"></app-analysis>
+  <!-- <p-card styleClass="invisibaleCard">fdfgsdfgsd</p-card> -->
+</div>
+
+<app-footer></app-footer>
