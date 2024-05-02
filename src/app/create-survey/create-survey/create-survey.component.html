@@ -1,314 +1,321 @@
 <app-header></app-header> <br /><br />
 <div class="bodyContainer">
-  <div class="mainDiv">
-    <span class="" (click)="displayForm()">
-      <i class="pi pi-plus-circle" style="font-size: 5rem"></i> <br />
-      <span>Create Survey</span>
-    </span>
-  </div>
-  <div class="surveyFormDiv" *ngIf="dialogFlag">
-    <p-dialog header="Survey Form"  [modal]="true" [draggable]="false" [resizable]="false" (onHide)="oncliClickCancel()"
-      styleClass="formsDialog1" [(visible)]="dialogFlag" [contentStyle]="{ 'background-color': '#F5F3F3' }">
-      <div class="formCardContainer">
-        <form [formGroup]="surveyForm">
-          <div class="grid">
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">State</label>
-                <div class="inputElement">
-                  <p-dropdown appendTo="body" styleClass="dropdown" [options]="statesArr" formControlName="state"
-                    placeholder="Select" ></p-dropdown>
-                </div>
-                <small *ngIf=" surveyForm.get('state')?.touched">
-                  <span style="color: red;font-size: 15px;">State is required.</span>
-                  <span *ngIf="surveyForm.get('state')?.valid" style="color: red;font-size: 15px;">Only Accept Alphabates.</span>
-                </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="taluka">Taluka</label>
-                  <input ngClass="formInput" type="text" id="taluka" pInputText formControlName="taluka"
-                  placeholder="Enter" required />
-                  <small *ngIf="!surveyForm.get('taluka')?.valid && surveyForm.get('taluka')?.touched">
-                    <span style="color: red;font-size: 15px;"> Taluka is required.</span>
-                    <!-- <span *ngIf="surveyForm.get('taluka').errors?.[talukaNamePattern]">
-                      Accept only Alphabates.
-                    </span> -->
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="village">Village</label>
-                  <input ngClass="formInput" type="text" id="village" pInputText formControlName="village"
-                  placeholder="Enter" />
-                  <small *ngIf="!surveyForm.get('village')?.valid && surveyForm.get('village')?.touched">
-                    <span style="color: red;font-size: 15px;"> Village is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Booth No</label>
-              
-                  <input ngClass="formInput" type="text" pInputText formControlName="booth_No"
-                  placeholder="Enter " required />
-                  <small *ngIf="!surveyForm.get('booth_No')?.valid && surveyForm.get('booth_No')?.touched">
-                    <span style="color: red;font-size: 15px;"> Booth No is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Family No</label>           
-                  <input ngClass="formInput" type="text" pInputText formControlName="family_No_for_Booth"
-                  placeholder="Enter" required/>
-                  <small *ngIf="!surveyForm.get('family_No_for_Booth')?.valid && surveyForm.get('family_No_for_Booth')?.touched">
-                    <span style="color: red;font-size: 15px;"> Family No is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">HOF in VL</label>
-                  <input ngClass="formInput" type="text" pInputText formControlName="sr_No_for_HOF_in_VL"
-                  placeholder="Enter" required/>
-                  <small *ngIf="!surveyForm.get('sr_No_for_HOF_in_VL')?.valid && surveyForm.get('sr_No_for_HOF_in_VL')?.touched">
-                    <span style="color: red;font-size: 15px;"> HOF in VL is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Caste</label>
-                <!-- <p-dropdown appendTo="body" styleClass="dropdown" [options]="statesArr" formControlName="caste"
-                  placeholder="Select"></p-dropdown> -->
-                  <input ngClass="formInput" type="text" pInputText formControlName="caste"
-                  placeholder="Enter" required />
-                  <small *ngIf="!surveyForm.get('caste')?.valid && surveyForm.get('caste')?.touched">
-                    <span style="color: red;font-size: 15px;"> Caste is required.</span>
-                  </small>
-              </div>
-
-            </div>
-
-
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Category</label>
-                
-                  <input ngClass="formInput" type="text" pInputText formControlName="category"
-                  placeholder="Enter" required/>
-                  <small *ngIf="!surveyForm.get('category')?.valid && surveyForm.get('category')?.touched">
-                    <span style="color: red;font-size: 15px;"> Category is required.</span>
-                  </small>
-              </div>
-            </div>
-
-
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Religion</label>
-             
-                  <input ngClass="formInput" type="text" pInputText formControlName="religion"
-                  placeholder="Enter" required/>
-                  <small *ngIf="!surveyForm.get('religion')?.valid && surveyForm.get('religion')?.touched">
-                    <span style="color: red;font-size: 15px;"> Religion is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Sr No on VL</label>
-
-                  <input ngClass="formInput" type="text" pInputText formControlName="sr_No_on_VL"
-                  placeholder="Enter" required />
-                  <small *ngIf="!surveyForm.get('sr_No_on_VL')?.valid && surveyForm.get('sr_No_on_VL')?.touched">
-                    <span style="color: red;font-size: 15px;"> Sr No on VL is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Name of Voter</label>
-
-                <input ngClass="formInput" type="text" pInputText formControlName="name_of_voter"
-                  placeholder="Enter " required/>
-                  <small *ngIf="!surveyForm.get('name_of_voter')?.valid && surveyForm.get('name_of_voter')?.touched">
-                    <span style="color: red;font-size: 15px;"> Name of Voter is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Age of Voter</label>
-
-                <input ngClass="formInput" type="text" pInputText formControlName="age_of_voter"
-                  placeholder="Enter" required />
-                  <small *ngIf="!surveyForm.get('age_of_voter')?.valid && surveyForm.get('age_of_voter')?.touched">
-                    <span style="color: red;font-size: 15px;"> Age of Voter is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Mobile Number</label>
-
-                <input ngClass="formInput" type="text" pInputText formControlName="mobile_number"
-                  placeholder="Enter" required />
-                  <small *ngIf="!surveyForm.get('mobile_number')?.valid && surveyForm.get('mobile_number')?.touched">
-                    <span style="color: red;font-size: 15px;"> Mobile Number is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Adhar No</label>
-
-                <input ngClass="formInput" type="text" pInputText formControlName="adhar_no"
-                  placeholder="Enter" required />
-                  <small *ngIf="!surveyForm.get('adhar_no')?.valid && surveyForm.get('adhar_no')?.touched">
-                    <span style="color: red;font-size: 15px;">Adhar No is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Education</label>
-                <input ngClass="formInput" type="text" pInputText formControlName="education" placeholder="Enter" required />
-                <small *ngIf="!surveyForm.get('education')?.valid && surveyForm.get('education')?.touched">
-                  <span style="color: red;font-size: 15px;">Education is required.</span>
-                </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Occupation</label>
-
-                <input ngClass="formInput" type="text" pInputText formControlName="occupation"
-                  placeholder="Enter" required />
-                  <small *ngIf="!surveyForm.get('occupation')?.valid && surveyForm.get('occupation')?.touched">
-                    <span style="color: red;font-size: 15px;">Occupation is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Vehicle</label>
-                <p-dropdown appendTo="body" styleClass="dropdown" [options]="yesNoDropdown" formControlName="vehicle"
+  <p-tabView>
+    <p-tabPanel header="Form 1">
+      <form [formGroup]="surveyForm">
+        <div class="grid">
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">State</label>
+              <div class="inputElement">
+                <p-dropdown appendTo="body" styleClass="dropdown" [options]="statesArr" formControlName="state"
                   placeholder="Select"></p-dropdown>
               </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Annual Income</label>
-
-                <input ngClass="formInput" type="text" pInputText formControlName="annual_income"
-                  placeholder="Enter " required/>
-                  <small *ngIf="!surveyForm.get('annual_income')?.valid && surveyForm.get('annual_income')?.touched">
-                    <span style="color: red;font-size: 15px;">Annual Income is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Toilet</label>
-                <p-dropdown appendTo="body" styleClass="dropdown" [options]="yesNoDropdown" formControlName="toilet"
-                  placeholder="Select"></p-dropdown>
-                  <small *ngIf="!surveyForm.get('toilet')?.valid && surveyForm.get('toilet')?.touched">
-                    <span style="color: red;font-size: 15px;">Toilet is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Water Source</label>
-                <p-dropdown appendTo="body" styleClass="dropdown" [options]="yesNoDropdown"
-                  formControlName="water_source" placeholder="Select"></p-dropdown>
-                  <small *ngIf="!surveyForm.get('water_source')?.valid && surveyForm.get('water_source')?.touched">
-                    <span style="color: red;font-size: 15px;">Water Source is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Helping Person Name</label>
-
-                <input ngClass="formInput" class="textBox textbox-shadow" pInputText
-                  formControlName="person_from_whom_you_seek_help" placeholder="Enter" required />
-                  <small *ngIf="!surveyForm.get('person_from_whom_you_seek_help')?.valid && surveyForm.get('person_from_whom_you_seek_help')?.touched">
-                    <span style="color: red;font-size: 15px;">Helping Person Name is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Development</label>
-              
-                  <input ngClass="formInput" type="text" pInputText formControlName="development"
-                  placeholder="Enter" required/>
-                  <small *ngIf="!surveyForm.get('development')?.valid && surveyForm.get('development')?.touched">
-                    <span style="color: red;font-size: 15px;">development is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Development Description</label>
-
-                <input ngClass="formInput" class="textBox textbox-shadow" pInputText
-                  formControlName="development_description" placeholder="Enter" required/>
-                  <small *ngIf="!surveyForm.get('development_description')?.valid && surveyForm.get('development_description')?.touched">
-                    <span style="color: red;font-size: 15px;">Development Description is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Whom are you going to vote for</label>
-
-                  <input ngClass="formInput" type="text" pInputText formControlName="whom_are_you_going_to_vote_for"
-                  placeholder="Enter" required/>
-                  <small *ngIf="!surveyForm.get('whom_are_you_going_to_vote_for')?.valid && surveyForm.get('whom_are_you_going_to_vote_for')?.touched">
-                    <span style="color: red;font-size: 15px;">Whom are you going to vote for is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Candidate Name</label>
-                <!-- <p-dropdown appendTo="body" styleClass="dropdown" [options]="statesArr"
-                  formControlName="candidate_of_choice" placeholder="Select"></p-dropdown> -->
-                  <input ngClass="formInput" type="text" pInputText formControlName="candidate_of_choice"
-                  placeholder="Enter" required />
-                  <small *ngIf="!surveyForm.get('candidate_of_choice')?.valid && surveyForm.get('candidate_of_choice')?.touched">
-                    <span style="color: red;font-size: 15px;">Candidate Name is required.</span>
-                  </small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="grid-content">
-                <label for="state">Issue</label>
-
-                <input ngClass="formInput" class="textBox textbox-shadow" pInputText
-                  formControlName="which_issue_are_you_facing_currently" placeholder="Enter" required />
-                  <small *ngIf="!surveyForm.get('which_issue_are_you_facing_currently')?.valid && surveyForm.get('which_issue_are_you_facing_currently')?.touched">
-                    <span style="color: red;font-size: 15px;">Issue is required.</span>
-                  </small>
-              </div>
+              <!-- <small *ngIf=" surveyForm.get('state')?.touched">
+                <span style="color: red;font-size: 15px;">State is required.</span>
+                <span *ngIf="surveyForm.get('state')?.valid" style="color: red;font-size: 15px;">Only Accept
+                  Alphabates.</span>
+              </small> -->
             </div>
           </div>
-        </form>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="taluka">Taluka</label>
+              <input ngClass="formInput" type="text" id="taluka" pInputText formControlName="taluka" placeholder="Enter"
+                required />
+              <!-- <small *ngIf="!surveyForm.get('taluka')?.valid && surveyForm.get('taluka')?.touched">
+                <span style="color: red;font-size: 15px;"> Taluka is required.</span>
 
-      </div>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="village">Village</label>
+              <input ngClass="formInput" type="text" id="village" pInputText formControlName="village"
+                placeholder="Enter" />
+              <!-- <small *ngIf="!surveyForm.get('village')?.valid && surveyForm.get('village')?.touched">
+                <span style="color: red;font-size: 15px;"> Village is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Booth No</label>
+
+              <input ngClass="formInput" type="text" pInputText formControlName="booth_No" placeholder="Enter "
+                required />
+              <!-- <small *ngIf="!surveyForm.get('booth_No')?.valid && surveyForm.get('booth_No')?.touched">
+                <span style="color: red;font-size: 15px;"> Booth No is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Family No</label>
+              <input ngClass="formInput" type="text" pInputText formControlName="family_No_for_Booth"
+                placeholder="Enter" required />
+              <!-- <small
+                *ngIf="!surveyForm.get('family_No_for_Booth')?.valid && surveyForm.get('family_No_for_Booth')?.touched">
+                <span style="color: red;font-size: 15px;"> Family No is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">HOF in VL</label>
+              <input ngClass="formInput" type="text" pInputText formControlName="sr_No_for_HOF_in_VL"
+                placeholder="Enter" required />
+              <!-- <small
+                *ngIf="!surveyForm.get('sr_No_for_HOF_in_VL')?.valid && surveyForm.get('sr_No_for_HOF_in_VL')?.touched">
+                <span style="color: red;font-size: 15px;"> HOF in VL is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Caste</label>
+
+              <input ngClass="formInput" type="text" pInputText formControlName="caste" placeholder="Enter" required />
+              <!-- <small *ngIf="!surveyForm.get('caste')?.valid && surveyForm.get('caste')?.touched">
+                <span style="color: red;font-size: 15px;"> Caste is required.</span>
+              </small> -->
+            </div>
+
+          </div>
+
+
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Category</label>
+
+              <input ngClass="formInput" type="text" pInputText formControlName="category" placeholder="Enter"
+                required />
+              <!-- <small *ngIf="!surveyForm.get('category')?.valid && surveyForm.get('category')?.touched">
+                <span style="color: red;font-size: 15px;"> Category is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Religion</label>
+
+              <input ngClass="formInput" type="text" pInputText formControlName="religion" placeholder="Enter"
+                required />
+              <!-- <small *ngIf="!surveyForm.get('religion')?.valid && surveyForm.get('religion')?.touched">
+                <span style="color: red;font-size: 15px;"> Religion is required.</span>
+              </small> -->
+            </div>
+          </div>
+        </div>
+      </form>
+    </p-tabPanel>
+
+
+    <p-tabPanel header="Form 2">
+      <form [formGroup]="surveyForm">
+        <div class="grid">
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Sr No on VL</label>
+
+              <input ngClass="formInput" type="text" pInputText formControlName="sr_No_on_VL" placeholder="Enter"
+                required />
+              <!-- <small *ngIf="!surveyForm.get('sr_No_on_VL')?.valid && surveyForm.get('sr_No_on_VL')?.touched">
+                <span style="color: red;font-size: 15px;"> Sr No on VL is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Name of Voter</label>
+
+              <input ngClass="formInput" type="text" pInputText formControlName="name_of_voter" placeholder="Enter "
+                required />
+              <!-- <small *ngIf="!surveyForm.get('name_of_voter')?.valid && surveyForm.get('name_of_voter')?.touched">
+                <span style="color: red;font-size: 15px;"> Name of Voter is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Age of Voter</label>
+
+              <input ngClass="formInput" type="text" pInputText formControlName="age_of_voter" placeholder="Enter"
+                required />
+              <!-- <small *ngIf="!surveyForm.get('age_of_voter')?.valid && surveyForm.get('age_of_voter')?.touched">
+                <span style="color: red;font-size: 15px;"> Age of Voter is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Mobile Number</label>
+
+              <input ngClass="formInput" type="text" pInputText formControlName="mobile_number" placeholder="Enter"
+                required />
+              <!-- <small *ngIf="!surveyForm.get('mobile_number')?.valid && surveyForm.get('mobile_number')?.touched">
+                <span style="color: red;font-size: 15px;"> Mobile Number is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Adhar No</label>
+
+              <input ngClass="formInput" type="text" pInputText formControlName="adhar_no" placeholder="Enter"
+                required />
+              <!-- <small *ngIf="!surveyForm.get('adhar_no')?.valid && surveyForm.get('adhar_no')?.touched">
+                <span style="color: red;font-size: 15px;">Adhar No is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Education</label>
+              <input ngClass="formInput" type="text" pInputText formControlName="education" placeholder="Enter"
+                required />
+              <!-- <small *ngIf="!surveyForm.get('education')?.valid && surveyForm.get('education')?.touched">
+                <span style="color: red;font-size: 15px;">Education is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Occupation</label>
+
+              <input ngClass="formInput" type="text" pInputText formControlName="occupation" placeholder="Enter"
+                required />
+              <!-- <small *ngIf="!surveyForm.get('occupation')?.valid && surveyForm.get('occupation')?.touched">
+                <span style="color: red;font-size: 15px;">Occupation is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Vehicle</label>
+              <p-dropdown appendTo="body" styleClass="dropdown" [options]="yesNoDropdown" formControlName="vehicle"
+                placeholder="Select"></p-dropdown>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Annual Income</label>
+
+              <input ngClass="formInput" type="text" pInputText formControlName="annual_income" placeholder="Enter "
+                required />
+              <!-- <small *ngIf="!surveyForm.get('annual_income')?.valid && surveyForm.get('annual_income')?.touched">
+                <span style="color: red;font-size: 15px;">Annual Income is required.</span>
+              </small> -->
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </p-tabPanel>
+    <p-tabPanel header="Form 3">
+      <form [formGroup]="surveyForm">
+        <div class="grid">
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Toilet</label>
+              <p-dropdown appendTo="body" styleClass="dropdown" [options]="yesNoDropdown" formControlName="toilet"
+                placeholder="Select"></p-dropdown>
+              <!-- <small *ngIf="!surveyForm.get('toilet')?.valid && surveyForm.get('toilet')?.touched">
+                <span style="color: red;font-size: 15px;">Toilet is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Water Source</label>
+              <p-dropdown appendTo="body" styleClass="dropdown" [options]="yesNoDropdown" formControlName="water_source"
+                placeholder="Select"></p-dropdown>
+              <!-- <small *ngIf="!surveyForm.get('water_source')?.valid && surveyForm.get('water_source')?.touched">
+                <span style="color: red;font-size: 15px;">Water Source is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Helping Person Name</label>
+
+              <input ngClass="formInput" class="textBox textbox-shadow" pInputText
+                formControlName="person_from_whom_you_seek_help" placeholder="Enter" required />
+              <!-- <small
+                *ngIf="!surveyForm.get('person_from_whom_you_seek_help')?.valid && surveyForm.get('person_from_whom_you_seek_help')?.touched">
+                <span style="color: red;font-size: 15px;">Helping Person Name is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Development</label>
+
+              <input ngClass="formInput" type="text" pInputText formControlName="development" placeholder="Enter"
+                required />
+              <!-- <small *ngIf="!surveyForm.get('development')?.valid && surveyForm.get('development')?.touched">
+                <span style="color: red;font-size: 15px;">development is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Development Description</label>
+
+              <input ngClass="formInput" class="textBox textbox-shadow" pInputText
+                formControlName="development_description" placeholder="Enter" required />
+              <!-- <small
+                *ngIf="!surveyForm.get('development_description')?.valid && surveyForm.get('development_description')?.touched">
+                <span style="color: red;font-size: 15px;">Development Description is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Whom are you going to vote for</label>
+
+              <input ngClass="formInput" type="text" pInputText formControlName="whom_are_you_going_to_vote_for"
+                placeholder="Enter" required />
+              <!-- <small
+                *ngIf="!surveyForm.get('whom_are_you_going_to_vote_for')?.valid && surveyForm.get('whom_are_you_going_to_vote_for')?.touched">
+                <span style="color: red;font-size: 15px;">Whom are you going to vote for is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Candidate Name</label>
+
+              <input ngClass="formInput" type="text" pInputText formControlName="candidate_of_choice"
+                placeholder="Enter" required />
+              <!-- <small
+                *ngIf="!surveyForm.get('candidate_of_choice')?.valid && surveyForm.get('candidate_of_choice')?.touched">
+                <span style="color: red;font-size: 15px;">Candidate Name is required.</span>
+              </small> -->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="grid-content">
+              <label for="state">Issue</label>
+
+              <input ngClass="formInput" class="textBox textbox-shadow" pInputText
+                formControlName="which_issue_are_you_facing_currently" placeholder="Enter" required />
+              <!-- <small
+                *ngIf="!surveyForm.get('which_issue_are_you_facing_currently')?.valid && surveyForm.get('which_issue_are_you_facing_currently')?.touched">
+                <span style="color: red;font-size: 15px;">Issue is required.</span>
+              </small> -->
+            </div>
+          </div>
+        </div>
+      </form>
       <div class="cardFooter">
         <button pButton pRipple type="submit"  label="Save"
           class="p-button-rounded p-button-sm p-button-help" [disabled]="!surveyForm.valid" (click)="submitForm()"></button>
         <button pButton pRipple type="button" label="Reset " class="p-button-rounded p-button-sm p-button-success"
           (click)="resetForm()"></button>
       </div>
-    </p-dialog>
+    </p-tabPanel>
+  </p-tabView>
   </div>
-</div>
 <app-footer></app-footer>

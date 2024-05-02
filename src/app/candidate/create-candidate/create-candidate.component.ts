@@ -36,7 +36,7 @@ export class CreateCandidateComponent implements OnInit {
         summary: 'Successfull',
         detail: 'Candidate add  Successfull',
       });
-      console.log(data,'candidate form');
+      this.ngOnInit();
       
     })
     this.router.navigate(['candidate/nav1'])

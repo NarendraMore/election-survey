@@ -21,7 +21,7 @@ import { ConfirmationService } from 'primeng/api';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import {FileUploadModule} from 'primeng/fileupload';
 import {TooltipModule} from 'primeng/tooltip';
-
+import {StepsModule} from 'primeng/steps';
 @NgModule({
   declarations: [
 
@@ -43,7 +43,9 @@ import {TooltipModule} from 'primeng/tooltip';
     PasswordModule,
     InputTextareaModule,
     FileUploadModule,
-    TooltipModule
+    TooltipModule,
+    StepsModule,
+    
   ],
   exports: [
     ImageModule,
@@ -60,6 +62,7 @@ import {TooltipModule} from 'primeng/tooltip';
     ConfirmDialogModule,
     PasswordModule,
     InputTextareaModule,
+    StepsModule
     
   ],
   providers: [

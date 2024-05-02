@@ -29,8 +29,7 @@ export class SurveyListComponent implements OnInit {
   newVoterData: any;
   editCandidateForm!: FormGroup;
 
-  showTooltip = false;
-  showTooltip1 = false;
+
   constructor(private router: Router,
     private vote: VoterService) { }
 

@@ -11,7 +11,7 @@ import { SurveyListComponent } from './navbar/survey-list/survey-list.component'
 import { ReportComponent } from './navbar/report/report.component';
 import { AnalystComponent } from './navbar/analyst/analyst.component';
 import { TooltipModule } from 'primeng/tooltip';
-
+import {TabViewModule} from 'primeng/tabview'
 
 
 @NgModule({
@@ -28,7 +28,8 @@ import { TooltipModule } from 'primeng/tooltip';
     CommonModule,
     CreateSurveyRoutingModule,
     SharedModule,
-    TooltipModule
+    TooltipModule,
+    TabViewModule
   ]
 })
 export class CreateSurveyModule { }

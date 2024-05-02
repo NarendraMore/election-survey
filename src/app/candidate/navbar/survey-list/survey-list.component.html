@@ -22,12 +22,10 @@
               <i class="pi pi-trash"  (click)="onClickdelete()" style="font-size: 2rem"></i>
             </span> -->
                     <span class="headIcons">
-                      <div *ngIf="showTooltip" style="position: fixed;margin-top: -2%;font-size: 16px;">Edit</div>
-                        <i class="pi pi-file-edit" (mouseover)="showTooltip = true" (mouseout)="showTooltip = false"  (click)="onClickEdit()" style="font-size: 2rem "></i>
+                        <i class="pi pi-file-edit" (click)="onClickEdit()" style="font-size: 2rem "></i>
                     </span>
                     <span class="headIcons">
-                      <div *ngIf="showTooltip1" style="position: fixed;margin-top: -2%;font-size: 16px;">Preview</div>
-                        <i class="pi pi-eye" (mouseover)="showTooltip1 = true" (mouseout)="showTooltip1 = false" (click)="onClickView()" style="font-size: 2rem"></i>
+                        <i class="pi pi-eye" (click)="onClickView()" style="font-size: 2rem"></i>
                     </span>
                 </div>
             </ng-template>
